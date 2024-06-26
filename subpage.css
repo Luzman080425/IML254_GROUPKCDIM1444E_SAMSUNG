@@ -1,0 +1,276 @@
+/*----------------------------------------------------------------Apply the Quicksand font to the entire document */
+body, .header, .navbar a {
+  font-family: 'Quicksand', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+/*-----------------------------------------------------------------------Gradient animation background */
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: linear-gradient(45deg, #ff006e, #3a86ff, #2a9d8f, #5e60ce, #7400b8);
+  background-size: 300% 300%;
+  animation: color 12s ease-in-out infinite;
+}
+
+@keyframes color {
+  0% {
+    background-position: 0 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
+
+/*-----------------------------------------------------------------------------------------Header */
+.header {
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 100px;
+  background: transparent;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+}
+
+.logo {
+  font-size: 32px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+/*-----------------------------------------------------------------------------------Nav Bar */
+.navbar {
+  display: flex;
+  align-items: center;
+}
+
+.navbar a {
+  position: relative;
+  font-size: 18px;
+  color: #fff;
+  font-weight: 500;
+  text-decoration: none;
+  margin-left: 40px;
+  margin-right: 15px;
+}
+
+.navbar a::before {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #fff;
+  transition: width 0.3s;
+}
+
+.navbar a:hover::before {
+  width: 100%;
+}
+
+/*-----------------------------------------------------------------------------Dropdown Menu */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  background: transparent;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.dropdown:hover .navbar a::before {
+  width: 0;
+}
+
+/*-------------------------------------------------------------------------------Footer */
+footer {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: auto;
+  background-color: #2d2e33;
+  padding: 60px 10%;
+}
+
+ul {
+  list-style: none;
+}
+
+.footer-col {
+  width: 25%;
+}
+
+.footer-col h4 {
+  position: relative;
+  margin-bottom: 30px;
+  font-weight: 400;
+  font-size: 22px;
+  color: #f1bc0d;
+  text-transform: capitalize;
+}
+
+.footer-col h4::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  background-color: #27c0ac;
+  height: 2px;
+  width: 40px;
+}
+
+ul li:not(:last-child) {
+  margin-bottom: 8px;
+}
+
+ul li a {
+  display: block;
+  font-size: 19px;
+  text-transform: capitalize;
+  color: #bdb6b6;
+  text-decoration: none;
+  transition: 0.4s;
+}
+
+ul li a:hover {
+  color: white;
+  padding-left: 2px;
+}
+
+.links a {
+  display: inline-block;
+  height: 44px;
+  width: 44px;
+  color: white;
+  background-color: rgba(40, 130, 214, 0.8);
+  margin: 0 8px 8px 0;
+  text-align: center;
+  line-height: 44px;
+  border-radius: 50%;
+  transition: 0.4s;
+}
+
+.links a:hover {
+  color: #4d4f55;
+  background-color: white;
+}
+
+@media (max-width: 740px) {
+  .footer-col {
+    width: 50%;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+
+  .footer-col h4::before {
+    all: unset;
+  }
+}
+
+@media (max-width: 555px) {
+  .footer-col {
+    width: 100%;
+  }
+}
+
+/*-----------------------------------------------------------------------------Scroll transition for the blocks */
+
+.block, .block1 {
+  opacity: 0;
+  transform: scale(0.5);
+  transition: opacity 0.5s, transform 0.5s;
+}
+
+.block.visible, .block1.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.block {
+  display: flex;
+  align-items: center;
+  margin: 20px 15px;
+  font-size: 30px;
+}
+
+.block img {
+  width: 300px; /* Set a fixed width */
+  height: 300px; /* Set a fixed height */
+  margin-right: 15px;
+  border-radius: 20%;
+  object-fit: cover; /* Ensures the image maintains aspect ratio */
+}
+
+.block .member-info p {
+  margin: 5px 0;
+  color: #fff;
+}
+
+.block1 {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 20px 15px;
+  text-align: right;
+  font-size: 30px;
+}
+
+.block1 img {
+  width: 300px; /* Set a fixed width */
+  height: 300px; /* Set a fixed height */
+  order: 2;
+  margin-left: 15px;
+  border-radius: 20%;
+  object-fit: cover; /* Ensures the image maintains aspect ratio */
+}
+
+.block1 .member-info {
+  order: 1;
+}
+
+.block1 .member-info p {
+  color: #fff;
+}
